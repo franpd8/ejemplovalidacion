@@ -20,8 +20,6 @@ console.log(listadoUsuarios)
 btn.addEventListener('submit', getUser)
 listadoUsuarios.addEventListener('click', printUsers)
 
-
-
 let users =[]
 
 function getUser(item) {
