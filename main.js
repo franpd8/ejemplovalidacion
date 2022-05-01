@@ -18,6 +18,7 @@ console.log(listadoUsuarios)
 
 
 btn.addEventListener('submit', getUser)
+listadoUsuarios.addEventListener('click', printUsers)
 
 
 
@@ -52,10 +53,18 @@ function getUser(item) {
 
 // Si el ejemplo funciona lo convertiremos en funcion con sus eventos 
 function printUsers(){
-  let infoUser = JSON.parse(window.localStorage.getItem("users"))
+  let infoUser = JSON.parse(localStorage.getItem("users") || "[]");
+  
 
   for(let i = 0; i < infoUser.length; i++){
+
+    // listadoUsuarios.innerHTML +=
+
     listadoUsuarios.innerHTML += `
+    
+                                              `
+    listadoUsuarios.innerHTML += `
+                            <div class="col-sm-6">
                                 <div class="card">
                                   <div class="card-body">
                                     <h5 class="card-title">
@@ -65,6 +74,7 @@ function printUsers(){
                                     </p>
                                   </div>
                                 </div>
+                              </div>
                                               `
   }
   
