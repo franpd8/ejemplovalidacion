@@ -32,8 +32,8 @@ function getUser(item) {
   console.log(userData," Nuevo usuario añadido")
   console.log(users,"Total usuarios")
   localStorage.setItem("users", JSON.stringify(users));
-  // listadoUsuarios.innerHTML = ``;
-  // printUsers()
+   listadoUsuarios.innerHTML = ``;
+   printUsers()
 }
 
  const cardTitle = document.querySelector('.card-title')
