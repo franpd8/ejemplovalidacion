@@ -9,14 +9,17 @@ console.log(getPass1)
 const getPass2=document.querySelector('#password2')
 console.log(getPass2)
 const btn=document.querySelector('#form')
-const listadoUsuarios=document.querySelector('#all-users')
-console.log(listadoUsuarios)
-
-btn.addEventListener('submit',getUser) 
-// main.js:15 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') at main.js:15:5 << Desde la pantalla de "usuarios" aparece este error que me impide pintar los usuarios
-
-// ^^ recoge datos(descomentar para usar)
 console.log(btn)
+const listadoUsuarios=document.querySelector('#all-users')
+console.log(listadoUsuarios) 
+// if(document.querySelector('#all-users')){
+//   const listadoUsuarios = document.querySelector('#all-users')
+// } 
+
+
+btn.addEventListener('submit', getUser)
+
+
 
 let users =[]
 
@@ -29,24 +32,30 @@ function getUser(item) {
   users.push(userData);
   console.log(userData," Nuevo usuario añadido")
   console.log(users,"Total usuarios")
-  localStorage.setItem("users", JSON.stringify(users));
-  // userList.innerHTML = ``;
+  window.localStorage.setItem("users", JSON.stringify(users));
+  listadoUsuarios.innerHTML = ``;
   printUsers()
 }
 
-
  const cardTitle = document.querySelector('.card-title')
  console.log(cardTitle)
+ if (cardTitle) {
+  cardTitle.addEventListener('click', () => {
+    console.log('btn clicked');
+  });
+}
 
-// listadoUsuarios.innerHTML = "hola"
 
-let infoUser = JSON.parse(localStorage.getItem("users"))
+//  listadoUsuarios.innerHTML = "hola"
+
+
+
+// Si el ejemplo funciona lo convertiremos en funcion con sus eventos 
+function printUsers(){
+  let infoUser = JSON.parse(window.localStorage.getItem("users"))
 
   for(let i = 0; i < infoUser.length; i++){
-
-    // main.js:44 Uncaught TypeError: Cannot read properties of null (reading 'innerHTML')at main.js:44:3 << Aparece este error desde la pagina de "crear usuario"
-    
-  listadoUsuarios.innerHTML += `
+    listadoUsuarios.innerHTML += `
                                 <div class="card">
                                   <div class="card-body">
                                     <h5 class="card-title">
@@ -57,18 +66,6 @@ let infoUser = JSON.parse(localStorage.getItem("users"))
                                   </div>
                                 </div>
                                               `
-  }
-
-// Si el ejemplo funciona lo convertiremos en funcion con sus eventos 
-function printUsers(){
-  let infoUser = JSON.parse(localStorage.getItem("users"))
-  console.log(infoUser)
-  console.log("bicicleta")
-  
-  for(let i = 0; i < infoUser.length; i++){
-
-    //Pegar aqui el innerHTML que funcione                       `
-                          
   }
   
 }
